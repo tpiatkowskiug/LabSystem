@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LabSystem1._0.Models.PriceList>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista zleceń</h2>
+
+<p class="btn btn-default">
+    @Html.ActionLink("Dodaj pakiet badań", "Create")
+</p>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfResearch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceNetto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceBrutto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfResearch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceNetto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceBrutto)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PriceListId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PriceListId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PriceListId })
+            </td>
+        </tr>
+    }
+
+</table>

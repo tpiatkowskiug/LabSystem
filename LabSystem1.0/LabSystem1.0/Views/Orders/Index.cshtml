@@ -1,0 +1,82 @@
+﻿@model IEnumerable<LabSystem1._0.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<p class="btn btn-default">
+    @Html.ActionLink("Baza klientów", "Index", "Customers")
+</p>
+<br />
+<br />
+<p class="btn btn-default">
+    @Html.ActionLink("Dodaj Klienta", "Create", "Customers")
+</p>
+<br />
+<br />
+<p class="btn btn-default">
+    @Html.ActionLink("Dodaj Zlecenie", "Create")
+</p>
+
+<br />
+<h4>Lista zleceń</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.NameAndSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceList.TypeOfResearch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantitySample)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarkingSample)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderCreationDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceList.TypeOfResearch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantitySample)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkingSample)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderCreationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+            </td>
+        </tr>
+    }
+
+</table>

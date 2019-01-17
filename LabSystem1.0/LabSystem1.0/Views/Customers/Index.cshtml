@@ -1,0 +1,142 @@
+﻿@model IEnumerable<LabSystem1._0.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+</head>
+<body>
+    <h2>Baza Klientów</h2>
+    <div>
+        <form id="search-form" method="get" data-ajax="true" data-ajax-target="#personlist-section" data-ajax-update="#personlist-section">
+            <input id="SearchQuery" name="searchQuery" data-autocomplete-source="@Url.Action("PersonSuggestions")" placeholder="Wprowadź" />
+            <input type="submit" value="Filtruj" />
+        </form>
+
+        <br />
+
+        @Html.Partial("_PersonList")
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+        <script>
+            var setupAutoComplete = function () {
+                var $input = $("#SearchQuery");
+
+                var options = {
+                    source: $input.attr("data-autocomplete-source"),
+                    select: function (evet, ui) {
+                        var $input = $("#SearchQuery")
+                        $input.val(ui.item.label);
+                        var $form = $input.parents("form:first");
+                        $form.submit();
+                    }
+                };
+                $input.autocomplete(options)
+            };
+            setupAutoComplete();
+        </script>
+
+    </div>
+</body>
+</html>
+
+@*<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.NameAndSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Voivodeship)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Commune)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhonePreferred)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.NameAndSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voivodeship)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commune)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhonePreferred)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId })
+            </td>
+        </tr>
+    }
+
+</table>*@

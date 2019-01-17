@@ -1,0 +1,42 @@
+﻿@model LabSystem1._0.Models.PriceList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PriceList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfResearch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfResearch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceNetto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceNetto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceBrutto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceBrutto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PriceListId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
